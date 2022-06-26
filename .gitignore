@@ -15,7 +15,6 @@ deploy
 .env
 
 # Editor directories and files
-.idea/*
 !.idea/jsLinters/*
 .vscode/*
 !.vscode/extensions.json
