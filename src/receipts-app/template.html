@@ -1,182 +1,186 @@
 <table class="t-root">
-    <tbody>
-    <tr>
-        <td>
-            <table class="t-brief text-center">
-                <tbody><tr>
-                    <td colspan="2"><b><%= locals.config.title %></b></td>
-                </tr>
-                <tr>
-                    <td colspan="2">ЄДРПОУ: <b><%= locals.config.code %></b></td>
-                </tr>
-                <tr>
-                    <td colspan="2">IBAN: <b><%= locals.config.iban %></b></td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="text-nowrap"><%= locals.config.bank %></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <br>квитанція за <b>%key-23%</b>, о/р <b>%key-0%</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <b>%key-2%</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        вул. Барабашова 32А, кв. %key-1%
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <br>
-                        <b>Прохання сплатити протягом<br>10 діб, але не пізніше 20-го числа!</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="text-right w-half">
-                        <br>
-                        Разом до сплати:
-                    </td>
-                    <td class="b-bottom w-half">
-                        <br>
-                        <b>%key-20%</b>
-                    </td>
-                </tr>
-                <!-- %# tr>
-                    <td style="text-align: right">
-                        Сплачую:
-                    </td>
-                    <td style="border-bottom: solid 1px #363636;text-align: center">
-                        &nbsp;
-                    </td>
-                </tr % -->
-                </tbody></table>
-        </td>
-        <td>
-            <table class="t-main w-full">
-                <tbody>
-                <tr>
-                    <td colspan="2" class="text-center">
-                        <b>Рахунок на сплату житлово-комунальних послуг за %key-23%</b>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <b><%= locals.config.title %></b>,
-                        ЄДРПОУ: <b><%= locals.config.code %></b>,
-                        IBAN: <b><%= locals.config.iban %></b>,
-                        <span class="text-nowrap"><%= locals.config.bank %></span>
-                    </td>
-                    <td class="text-right"></td>
-                </tr>
-                <tr>
-                    <td>
-                        <b>%key-2%</b>, о/р <b>%key-0%</b>, загальна площа: <b>%key-3% кв.м.</b>
-                    </td>
-                    <!-- %# td style="text-align: right">
-                        Льгота: <b>нет</b>
-                    </td % -->
-                </tr>
-                <!-- %# tr>
-                    <td style="text-align: left" colspan="2">
-                        <b>Загальна площа:</b> %key-3% кв.м.
-                    </td>
-                </tr % -->
-                <tr>
-                    <td colspan="2">
-                        <table class="t-money w-full text-center">
-                            <tbody>
-                            <tr>
-                                <td><b>Нарахування за</b></td>
-                                <td><b>Об'єм</b></td>
-                                <td><b>Од.вим.</b></td>
-                                <td><b>Нарах.</b></td>
-                                <td><b>Пільга</b></td>
-                                <td><b>Субс.</b></td>
-                                <td><b>Кориг.</b></td>
-                                <td><b>До сплати</b></td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">Обслуговування будинку<br>і прибудинкової території (%key-4% грн/кв.м)</td>
-                                <td>%key-3%</td>
-                                <td>кв.м</td>
-                                <td>%key-5%</td>
-                                <td>%key-14%</td>
-                                <td>%key-15%</td>
-                                <td>%key-16%</td>
-                                <td>%total-vnesok-pay%</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">Водопостачання (%key-7% грн/куб.м)</td>
-                                <td>%key-6%</td>
-                                <td>куб.м</td>
-                                <td>%key-8%</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>%key-8%</td>
-                            </tr>
-                            <tr style="%display-canal%">
-                                <td class="text-left">Водовідведення (%key-10% грн/куб.м)</td>
-                                <td>%key-9%</td>
-                                <td>куб.м</td>
-                                <td>%key-11%</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>%key-11%</td>
-                            </tr>
-                            <tr>
-                                <td class="text-left">Електроенергія (%key-12% грн/кв.м)</td>
-                                <td>%key-3%</td>
-                                <td>кв.м</td>
-                                <td>%key-13%</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>%key-13%</td>
-                            </tr>
-                            <tr class="f-bold">
-                                <td class="text-left">Разом</td>
-                                <td colspan="2">&nbsp;</td>
-                                <td>%total-count%</td>
-                                <td colspan="3">&nbsp;</td>
-                                <td>%key-17%</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="3">&nbsp;</td>
-                                <td rowspan="3" colspan="3"></td>
-                                <td colspan="3" class="text-right" style="%pay-until-visibility%">Сплачено до %pay-until%</td>
-                                <td><b style="%pay-until-visibility%">%key-21%</b></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" class="text-right" style="min-width:123px;%pay-until-visibility%">Борг станом на %pay-until%</td>
-                                <td><b style="%pay-until-visibility%">%key-18%</b></td>
-                            </tr>
-                            <tr>
-                                <td colspan="3" style="text-align: right">Разом до сплати</td>
-                                <td class="f-accent"><b>%key-20%</b></td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="text-center">
-                        %info%
-                        <!-- %#
-                            <b>Уважаемые соседи!</b> Просим вас оплатить взносы по возможности на несколько месяцев вперед в связи необходимостью погасить задолженность перед КП «Харьковводоканал» для перехода на прямые расчеты.<br>
-                            <span style="%display-water%">Начисления по водоснабжению и водоотведению будут проведены в следующем месяце из-за отсутствия показаний счетчика по вашей квартире.</span>
-                            % -->
-                    </td>
-                </tr>
-                </tbody>
+  <tbody>
+  <tr>
+    <td>
+      <table class="t-brief text-center">
+        <tbody>
+        <tr>
+          <td colspan="2"><b><%= locals.config.title %></b></td>
+        </tr>
+        <tr>
+          <td colspan="2">ЄДРПОУ: <b><%= locals.config.code %></b></td>
+        </tr>
+        <tr>
+          <td colspan="2">IBAN: <b><%= locals.config.iban %></b></td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-nowrap"><%= locals.config.bank %></td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <br>квитанція за <b>%key-23%</b>, о/р <b>%key-0%</b>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <b>%key-2%</b>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            вул. Барабашова 32А, кв. %key-1%
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <br>
+            <b>Прохання сплатити протягом<br>10 діб, але не пізніше 20-го числа!</b>
+          </td>
+        </tr>
+        <tr>
+          <td class="text-right w-half">
+            <br>
+            Разом до сплати:
+          </td>
+          <td class="b-bottom w-half">
+            <br>
+            <b>%key-20%</b>
+          </td>
+        </tr>
+        <!-- %# tr>
+            <td style="text-align: right">
+                Сплачую:
+            </td>
+            <td style="border-bottom: solid 1px #363636;text-align: center">
+                &nbsp;
+            </td>
+        </tr % -->
+        </tbody>
+      </table>
+    </td>
+    <td>
+      <table class="t-main w-full">
+        <tbody>
+        <tr>
+          <td colspan="2" class="text-center">
+            <b>Рахунок на сплату житлово-комунальних послуг за %key-23%</b>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <b><%= locals.config.title %></b>,
+            ЄДРПОУ: <b><%= locals.config.code %></b>,
+            IBAN: <b><%= locals.config.iban %></b>,
+            <span class="text-nowrap"><%= locals.config.bank %></span>
+          </td>
+          <td class="text-right"></td>
+        </tr>
+        <tr>
+          <td>
+            <b>%key-2%</b>, о/р <b>%key-0%</b>, загальна площа: <b>%key-3% кв.м.</b>
+          </td>
+          <!-- %# td style="text-align: right">
+              Льгота: <b>нет</b>
+          </td % -->
+        </tr>
+        <!-- %# tr>
+            <td style="text-align: left" colspan="2">
+                <b>Загальна площа:</b> %key-3% кв.м.
+            </td>
+        </tr % -->
+        <tr>
+          <td colspan="2">
+            <table class="t-money w-full text-center">
+              <tbody>
+              <tr>
+                <td><b>Нарахування за</b></td>
+                <td><b>Об'єм</b></td>
+                <td><b>Од.вим.</b></td>
+                <td><b>Нарах.</b></td>
+                <td><b>Пільга</b></td>
+                <td><b>Субс.</b></td>
+                <td><b>Кориг.</b></td>
+                <td><b>До сплати</b></td>
+              </tr>
+              <tr>
+                <td class="text-left">Обслуговування будинку<br>і прибудинкової території (%key-4% грн/кв.м)</td>
+                <td>%key-3%</td>
+                <td>кв.м</td>
+                <td>%key-5%</td>
+                <td>%key-14%</td>
+                <td>%key-15%</td>
+                <td>%key-16%</td>
+                <td>%total-vnesok-pay%</td>
+              </tr>
+              <tr>
+                <td class="text-left">Водопостачання (%key-7% грн/куб.м)</td>
+                <td>%key-6%</td>
+                <td>куб.м</td>
+                <td>%key-8%</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>%key-8%</td>
+              </tr>
+              <tr style="%display-canal%">
+                <td class="text-left">Водовідведення (%key-10% грн/куб.м)</td>
+                <td>%key-9%</td>
+                <td>куб.м</td>
+                <td>%key-11%</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>%key-11%</td>
+              </tr>
+              <tr>
+                <td class="text-left">Електроенергія (%key-12% грн/кв.м)</td>
+                <td>%key-3%</td>
+                <td>кв.м</td>
+                <td>%key-13%</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>%key-13%</td>
+              </tr>
+              <tr class="f-bold">
+                <td class="text-left">Разом</td>
+                <td colspan="2">&nbsp;</td>
+                <td>%total-count%</td>
+                <td colspan="3">&nbsp;</td>
+                <td>%key-17%</td>
+              </tr>
+              <tr>
+                <td rowspan="3">&nbsp;</td>
+                <td rowspan="3" colspan="3"></td>
+                <td colspan="3" class="text-right" style="%pay-until-visibility%">Сплачено до %pay-until%</td>
+                <td><b style="%pay-until-visibility%">%key-21%</b></td>
+              </tr>
+              <tr>
+                <td colspan="3" class="text-right" style="min-width:123px;%pay-until-visibility%">Борг станом на
+                  %pay-until%
+                </td>
+                <td><b style="%pay-until-visibility%">%key-18%</b></td>
+              </tr>
+              <tr>
+                <td colspan="3" style="text-align: right">Разом до сплати</td>
+                <td class="f-accent"><b>%key-20%</b></td>
+              </tr>
+              </tbody>
             </table>
-        </td>
-    </tr>
-    </tbody>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" class="text-center">
+            %info%
+            <!-- %#
+                <b>Уважаемые соседи!</b> Просим вас оплатить взносы по возможности на несколько месяцев вперед в связи необходимостью погасить задолженность перед КП «Харьковводоканал» для перехода на прямые расчеты.<br>
+                <span style="%display-water%">Начисления по водоснабжению и водоотведению будут проведены в следующем месяце из-за отсутствия показаний счетчика по вашей квартире.</span>
+                % -->
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+  </tbody>
 </table>
