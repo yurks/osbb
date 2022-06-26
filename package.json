@@ -4,7 +4,7 @@
   "description": "Google App Script for generating payment receipts for property owners. Developed for Ukrainian apartment house managers who operating with Housing Cooperatives, so-called OSBB.",
   "config": {
     "receipts": {
-      "htmlFile": "receipts.html"
+      "htmlFile": "lib/receipts.html"
     }
   },
   "keywords": [
@@ -37,7 +37,7 @@
   "main": "src/app.js",
   "scripts": {
     "dev": "npm-run-all --parallel watch start",
-    "deploy": "cd ./deploy && clasp push",
+    "deploy": "yarn build && cd ./deploy && clasp push",
     "build": "rollup -c",
     "watch": "rollup -c -w",
     "start": "serve deploy/lib",

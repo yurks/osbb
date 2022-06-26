@@ -47,7 +47,7 @@ export default [
   {
     input: 'src/receipts-app/index.js',
     output: {
-      dir: 'deploy/lib',
+      dir: 'deploy',
       format: 'iife',
       sourcemap: false
     },
