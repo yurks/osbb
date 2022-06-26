@@ -1,0 +1,92 @@
+@media print {
+  [print-cloak], [print-cloak] * {
+    display: none !important
+  }
+  @page { margin: .75cm;  }
+}
+
+$border: 0.3pt solid black;
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font: 10px/1.1 serif;
+}
+
+table {
+  border: 0;
+  border-collapse:collapse;
+  border-spacing:0;
+  margin: 0 auto;
+  td {
+    padding: 1px 0;
+  }
+}
+
+.f-bold {
+  font-weight: bold;
+}
+
+.f-accent {
+  font-size:14px;
+}
+
+.t-root {
+  page-break-inside: avoid;
+  border: $border;
+  margin-bottom: 1em;
+  &:last-child {
+    margin-bottom: 0
+  }
+}
+
+.t-brief {
+  min-width: 208px;
+}
+
+.t-main {
+  td {
+    padding: 1px 2px 1px 10px;
+  }
+}
+
+.t-money {
+  td {
+    padding: 2px 4px;
+    border-right: $border;
+    border-bottom: $border;
+    &:first-child {
+      border-left: $border;
+    }
+  }
+  tr:first-child td {
+    border-top: $border;
+  }
+}
+
+.b-bottom {
+  border-bottom: $border;
+}
+
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+
+.text-nowrap {
+  white-space:nowrap;
+}
+
+.w-half {
+  width: 50%
+}
+
+.w-full {
+  width: 100%
+}
