@@ -34,10 +34,13 @@ table {
 
 .t-root {
   page-break-inside: avoid;
-  border: $border;
+  border-bottom: 1px dotted black;
   margin-bottom: 1em;
   &:last-child {
     margin-bottom: 0
+  }
+  & > tbody > tr > td {
+    padding-bottom: 1em;
   }
 }
 
@@ -54,10 +57,10 @@ table {
 .t-money {
   td {
     padding: 2px 4px;
-    border-right: $border;
+    border-left: $border;
     border-bottom: $border;
-    &:first-child {
-      border-left: $border;
+    &:last-child {
+      border-right: $border;
     }
   }
   tr:first-child td {
