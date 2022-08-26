@@ -13,18 +13,23 @@ const generateTable = () => {
 
   const uiMessage = [];
 
+  const formatDate = (date) => `${(date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1)}.${date.getFullYear()}`;
+
+  const formatDateForSheetName = (date) =>
+    `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' : ''}${date.getMonth() + 1}`;
+
   const date = new Date();
   date.setDate(1);
 
-  const month = `${(date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1)}.${date.getFullYear()}`;
+  const month = formatDate(date);
   uiMessage.push(`поточний місяць: ${month}`);
 
   date.setMonth(date.getMonth() - 1);
-  const curMonthSheetName = `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' : ''}${date.getMonth() + 1}`;
-  const curMonthForUser = `${(date.getMonth() + 1 < 10 ? '0' : '') + (date.getMonth() + 1)}.${date.getFullYear()}`;
+  const curMonthSheetName = formatDateForSheetName(date);
+  const curMonthForUser = formatDate(date);
 
   date.setMonth(date.getMonth() - 1);
-  const prevMonthSheetName = `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' : ''}${date.getMonth() + 1}`;
+  const prevMonthSheetName = formatDateForSheetName(date);
   uiMessage.push(`листи: ${curMonthSheetName} -- ${prevMonthSheetName}`);
 
   const re_waterSheetDate = /\d{2}\.\d{4}/;
@@ -34,12 +39,14 @@ const generateTable = () => {
   let waterPrevMonth;
 
   for (const n in _waterSheets) {
-    monthWater = `${re_waterSheetDate.exec(_waterSheets[n].getName())}`;
+    const _waterSheet = _waterSheets[n];
+    const _waterSheetPrev = _waterSheets[~~n + 1];
+    monthWater = `${re_waterSheetDate.exec(_waterSheet.getName())}`;
     if (monthWater === month) {
-      water = _waterSheets[n].getDataRange().getValues().slice(3);
-      waterPrevMonth = _waterSheets[~~n + 1].getDataRange().getValues().slice(3);
-      uiMessage.push(`вода, дати: ${monthWater} -- ${re_waterSheetDate.exec(_waterSheets[~~n + 1].getName())}`);
-      uiMessage.push(`вода, листи: ${_waterSheets[n].getName()} -- ${_waterSheets[~~n + 1].getName()}`);
+      water = _waterSheet.getDataRange().getValues().slice(3);
+      waterPrevMonth = _waterSheetPrev.getDataRange().getValues().slice(3);
+      uiMessage.push(`вода, дати: ${monthWater} -- ${re_waterSheetDate.exec(_waterSheetPrev.getName())}`);
+      uiMessage.push(`вода, листи: ${_waterSheet.getName()} -- ${_waterSheetPrev.getName()}`);
       break;
     }
   }
