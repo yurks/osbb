@@ -10,7 +10,7 @@ lerna-debug.log*
 # Dev
 node_modules
 .DS_Store
-deploy
+deploy/lib
 .dev
 .env
 
