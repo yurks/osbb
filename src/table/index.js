@@ -103,7 +103,9 @@ const generateTable = () => {
       'до сплати',
       'сплачено',
       'коментар',
-      'дата'
+      'дата',
+      'ліфт',
+      'нарах'
     ]
   ];
 
@@ -186,14 +188,16 @@ const generateTable = () => {
       '',
       '',
 
-      `=ROUND(F${index}+I${index}+L${index}+N${index}-O${index}-P${index}+Q${index},2)`,
+      `=ROUND(F${index}+I${index}+L${index}+N${index}+Z${index}-O${index}-P${index}+Q${index},2)`,
       `=ROUND('${prevMonthSheetName}'!T${index}-V${index},2)`,
       `=ROUND(R${index}+S${index},2)`,
       `=MAX(T${index},0)`,
       '',
       '',
       // eslint-disable-next-line no-irregular-whitespace
-      `${curMonthForUser} `
+      `${curMonthForUser} `,
+      '',
+      `=ROUND(D${index}*Y${index},2)`
     ]);
   }
 
