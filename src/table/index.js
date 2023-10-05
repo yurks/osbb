@@ -1,6 +1,6 @@
 const title = 'Продовжувати?';
 
-const generateTable = () => {
+const generateTable = (customDate) => {
   const $$users = SpreadsheetApp.openById(process.env.SHEET_USERS);
   const $$water = SpreadsheetApp.openById(process.env.SHEET_WATER);
 
@@ -18,7 +18,7 @@ const generateTable = () => {
   const formatDateForSheetName = (date) =>
     `${date.getFullYear()}-${date.getMonth() + 1 < 10 ? '0' : ''}${date.getMonth() + 1}`;
 
-  const date = new Date();
+  const date = customDate || new Date();
   date.setDate(1);
 
   const month = formatDate(date);
@@ -51,16 +51,32 @@ const generateTable = () => {
     }
   }
 
-  if (!water || !waterPrevMonth) {
-    uiMessage.push('не знайдено показників водопостачання!');
-  }
   const ui = SpreadsheetApp.getUi();
-  const response = ui.alert(title, uiMessage.join('\n'), ui.ButtonSet.YES_NO);
 
-  if (response === ui.Button.YES) {
-    Logger.log('The user clicked "Yes."');
+  if (!water || !waterPrevMonth) {
+    uiMessage.push('\nНе знайдено показників водопостачання!\nВкажіть інший місяць у форматі YYYY-MM:\n\n');
+
+    const response = ui.prompt(title, uiMessage.join('\n'), ui.ButtonSet.OK_CANCEL);
+    const responseText = response.getResponseText()
+
+    if (response.getSelectedButton() === ui.Button.OK && responseText) {
+      Logger.log('The user clicked "Ok"');
+      Logger.log(`The user entered "${responseText}"`);
+      const date = new Date(responseText)
+      if (!isFinite(date.getTime())) {
+        throw new Error('Невірна дата! Дозволений формат YYYY-MM')
+      }
+      return generateTable(date)
+    }
+    return
   } else {
-    return;
+    const response = ui.alert(title, uiMessage.join('\n'), ui.ButtonSet.YES_NO)
+
+    if (response === ui.Button.YES) {
+      Logger.log('The user clicked "Yes"');
+    } else {
+      return;
+    }
   }
 
   Logger.log($users.getName());
